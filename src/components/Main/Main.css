@@ -1,0 +1,18 @@
+.Main {
+    background-image: linear-gradient(to bottom right, red, yellow);
+}
+
+.Button {
+    background-color: black;
+}
+
+.Button:hover {
+    transform: scale(1.1, 1.1);
+    text-shadow: 1px 1px black;
+    color: white;
+}
+
+.table {
+    padding-left: 12%;
+    padding-right: 12%;
+}
