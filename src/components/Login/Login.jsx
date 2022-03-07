@@ -1,6 +1,8 @@
+import axios from "axios";
 import { Component } from "react";
 import { Button, Card, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import Main from "../Main/Main";
 import UserService from "../services/UserService";
 
 export class Login extends Component {
@@ -16,19 +18,28 @@ export class Login extends Component {
     this.setState({
       email: event.target.value
     })
-    console.log(this.state.email);
   } 
   
   updatePassword(event) {
     this.setState({
       password: event.target.value
     })
-    console.log(this.state.password);
   } 
 
   handleSubmit(event) {
     event.preventDefault();
     console.log(this.state);
+  }
+
+  handleLogin(email, password) {
+    axios.get("http://localhost:8080/users/login/" + email + "/" + password)
+    .then((response) => {
+      if(response.data === true) {
+        console.log("LOGIN SUCCESS") 
+      } else if (response.data === false) {
+        console.log("LOGIN FAILED")
+      }
+    });
   }
 
   render() {
@@ -65,13 +76,13 @@ export class Login extends Component {
                   style={{ width: "100%" }}
                   className="px-5"
                   variant="primary"
-                  onClick={this.handleSubmit}
+                  onClick={() => {this.handleLogin(this.state.email, this.state.password)}}
                   >
                   {`Logga in`}
                 </Button>
                 <div className="text-white m-1 text-center">
                   {`Har du inget konto? `}
-                  <Link to="/signup">{`Skapa konto`}</Link>
+                  <Link to="/main">{`Skapa konto`}</Link>
                 </div>
                 <div className="text-white m-1 text-center">
                   <Link to="/forgot-password">Glömt lösenord?</Link>

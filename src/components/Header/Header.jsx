@@ -66,15 +66,7 @@ export default function Header() {
                       <a href="/">{`Lägg till`}</a>
                     </Col>
                     <Col>
-                      <Button
-                        className="p-0 text-white"
-                        style={{
-                          textDecoration: "none",
-                          fontSize: "18px",
-                          border: "none",
-                        }}
-                        variant="link"
-                      >{`Logga ut`}</Button>
+                      <a href="/">{`Logga ut`}</a>
                     </Col>
                   </Col>
                 </div>
@@ -97,9 +89,7 @@ export default function Header() {
             </Col>
             <Col>
               <span>
-                <Nav.Link
-                  href="/" /* onClick={() => handleLogout()} */
-                >{`Logga ut`}</Nav.Link>
+                <Nav.Link href="/">{`Logga ut`}</Nav.Link>
               </span>
             </Col>
           </Col>
