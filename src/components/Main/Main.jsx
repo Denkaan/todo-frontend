@@ -4,7 +4,7 @@ import "./Main.css";
 import DeleteIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
 import CloseIcon from "@mui/icons-material/Close";
-import { Modal, Button } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 
 export class Main extends Component {
   constructor(props) {
@@ -59,7 +59,7 @@ export class Main extends Component {
                 <td>
                   <DeleteIcon type="button" onClick={this.openModal} />
                 </td>
-                <Modal show={this.state.isOpen} onHide={this.closeModal}>
+                <Modal show={this.state.isOpen}>
                   <Modal.Header>
                     <Modal.Title>RADERA TASK</Modal.Title>
                     <CloseIcon type="button" onClick={this.closeModal} />

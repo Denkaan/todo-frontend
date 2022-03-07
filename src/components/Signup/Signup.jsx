@@ -1,24 +1,29 @@
 import axios from "axios";
 import { useState } from "react";
-import { Button, Card, Form, Spinner } from "react-bootstrap";
+import { Button, Card, Form, Spinner, Alert, Modal } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 
-const Login = () => {
+const Signup = () => {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [role] = useState("user");
   const [loading, setLoading] = useState(false);
   const [show, setShow] = useState(false);
+  const [error, setError] = useState("");
+  const [modalShow, setModalShow] = useState(false);
   const navigate = useNavigate();
 
-  const handleLogin = async (email, password) => {
+  const handleSignup = async (email, password, role) => {
     axios
-      .get("http://localhost:8080/users/login/" + email + "/" + password)
+      .post("http://localhost:8080/users/createUser", {email: email, password: password, role: role})
       .then((response) => {
         if (response.data === true) {
           console.log("LOGIN SUCCESS");
-          navigate("/main");
+          setModalShow(true);
+          setLoading(false);
         } else if (response.data === false) {
           console.log("LOGIN FAILED");
+          setLoading(false);
           setShow(true);
         }
       });
@@ -26,24 +31,47 @@ const Login = () => {
 
   const handleCredentials = () => {
     setTimeout(() => {
-      setLoading(false);
-      handleLogin(email, password);
+      handleSignup(email, password, role);
     }, 1000);
   };
 
   return (
+    <>
+    <Modal
+      show={modalShow}
+      onHide={setModalShow}
+      backdrop="static"
+      keyboard={false}
+    >
+      <Modal.Header>
+        <Modal.Title>{`SKAPA KONTO LYCKADES!`}</Modal.Title>
+      </Modal.Header>
+      <Modal.Footer className="text-center d-block">
+        <Button
+          variant="primary"
+          style={{ width: "15%" }}
+          onClick={() => {
+            navigate("/");
+          }}
+        >
+          {`Okej`}
+        </Button>
+      </Modal.Footer>
+    </Modal>
     <div className="main d-flex justify-content-center">
       <Card className="logincard">
         <Card.Header className="text-center">
           <h3 className="text-white">{`Logga in`}</h3>
         </Card.Header>
         <Card.Body>
+        {error && <Alert variant="danger">{error}</Alert>}
           <Form>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label className="text-white">{`Email`}</Form.Label>
               <Form.Control
                 type="email"
                 placeholder="Email"
+                minLength={2}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </Form.Group>
@@ -53,6 +81,7 @@ const Login = () => {
               <Form.Control
                 type="password"
                 placeholder="Password"
+                minLength={2}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
@@ -68,15 +97,11 @@ const Login = () => {
                     handleCredentials();
                   }}
                 >
-                  {`Logga in`}
+                  {`Skapa konto`}
                 </Button>
-                <div className="text-white m-1 text-center">
-                  {`Har du inget konto? `}
-                  <Link to="/signup">{`Skapa konto`}</Link>
-                </div>
-                <div className="text-white m-1 text-center">
-                  <Link to="/forgot-password">Glömt lösenord?</Link>
-                </div>
+                <div className="p-4 box mt-3 text-center text-black">
+                {`Har du redan ett konto?`} <Link to="/">{`Logga in`}</Link>
+              </div>
               </div>
             ) : (
               <div className="d-grid">
@@ -98,7 +123,7 @@ const Login = () => {
           <Card className="error">
             <Card.Header className="text-center">
               <p className="text-warning m-0">
-                {`Fel användarnamn eller lösenord`}
+                {`Det gick inte att skapa konto`}
               </p>
             </Card.Header>
           </Card>
@@ -107,7 +132,8 @@ const Login = () => {
         )}
       </Card>
     </div>
+    </>
   );
 };
 
-export default Login;
+export default Signup;
