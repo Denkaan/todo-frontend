@@ -30,86 +30,81 @@ export default function Header() {
   }, []);
 
   return (
-      <Container fluid id="navbar" className="mb-3">
-        <Row className="m-auto text-center">
-          {windowDimensions.width < 768 ? (
-            <div>
-              <div className="d-flex justify-content-end">
-                {isOpen ? (
-                  <></>
-                ) : (
-                  <GiHamburgerMenu
-                    size={40}
-                    className="hamburger"
-                    onClick={handleOpen}
-                  />
-                )}
-              </div>
-              <div className="d-flex justify-content-end">
-                {isOpen ? (
-                  <div className="hamburger-open">
-                    <Col className="flex-column hamburger-items">
-                      <Col
-                        className="d-flex justify-content-end"
-                        style={{ padding: "10px 10px 0 0" }}
-                      >
-                        <ImCross
-                          size={25}
-                          className="hamburger"
-                          onClick={handleOpen}
-                        />
-                      </Col>
-                      <Col>
-                        <a href="/main">{`Hem`}</a>
-                      </Col>
-                      <Col>
-                        <a href="/profile">{`Profil`}</a>
-                      </Col>
-                      <Col>
-                        <a href="/about">{`Om oss`}</a>
-                      </Col>
-                      <Col>
-                        <a href="/contact">{`Kontakt`}</a>
-                      </Col>
-                      <Col>
-                        <Button
-                          className="p-0 text-white"
-                          style={{
-                            textDecoration: "none",
-                            fontSize: "18px",
-                            border: "none",
-                          }}
-                          variant="link"
-                        >{`Logga ut`}</Button>
-                      </Col>
-                    </Col>
-                  </div>
-                ) : (
-                  <></>
-                )}
-              </div>
+    <Container fluid id="navbar" className="mb-3">
+      <Row className="m-auto text-center">
+        {windowDimensions.width < 768 ? (
+          <div>
+            <div className="d-flex justify-content-end">
+              {isOpen ? (
+                <></>
+              ) : (
+                <GiHamburgerMenu
+                  size={40}
+                  className="hamburger"
+                  onClick={handleOpen}
+                />
+              )}
             </div>
-          ) : (
-            <Col xs={10} lg={8} className="d-flex m-auto">
-              <Col>
-                <span>
-                  <Nav.Link href="/main">{`Hem`}</Nav.Link>
-                </span>
-              </Col>
-              <Col>
-                <span>
-                  <Nav.Link href="/profile">{`Lägg till`}</Nav.Link>
-                </span>
-              </Col>
-              <Col>
-                <span>
-                  <Nav.Link  href="/"/* onClick={() => handleLogout()} */
-                  >{`Logga ut`}</Nav.Link>
-                </span>
-              </Col>
+            <div className="d-flex justify-content-end">
+              {isOpen ? (
+                <div className="hamburger-open">
+                  <Col className="flex-column hamburger-items">
+                    <Col
+                      className="d-flex justify-content-end"
+                      style={{ padding: "10px 10px 0 0" }}
+                    >
+                      <ImCross
+                        size={25}
+                        className="hamburger"
+                        onClick={handleOpen}
+                      />
+                    </Col>
+                    <Col>
+                      <a href="/main">{`Hem`}</a>
+                    </Col>
+                    <Col>
+                      <a href="/">{`Lägg till`}</a>
+                    </Col>
+                    <Col>
+                      <Button
+                        className="p-0 text-white"
+                        style={{
+                          textDecoration: "none",
+                          fontSize: "18px",
+                          border: "none",
+                        }}
+                        variant="link"
+                      >{`Logga ut`}</Button>
+                    </Col>
+                  </Col>
+                </div>
+              ) : (
+                <></>
+              )}
+            </div>
+          </div>
+        ) : (
+          <Col xs={10} lg={8} className="d-flex m-auto">
+            <Col>
+              <span>
+                <Nav.Link href="/main">{`Hem`}</Nav.Link>
+              </span>
             </Col>
-          )}
-        </Row>
-      </Container>
+            <Col>
+              <span>
+                <Nav.Link href="/">{`Lägg till`}</Nav.Link>
+              </span>
+            </Col>
+            <Col>
+              <span>
+                <Nav.Link
+                  href="/" /* onClick={() => handleLogout()} */
+                >{`Logga ut`}</Nav.Link>
+              </span>
+            </Col>
+          </Col>
+        )}
+      </Row>
+    </Container>
   );
 }
