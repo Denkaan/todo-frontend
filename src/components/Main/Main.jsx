@@ -1,10 +1,11 @@
-import React, { Component } from "react";
-import TaskService from "../services/TaskService";
-import "./Main.css";
+import CloseIcon from "@mui/icons-material/Close";
 import DeleteIcon from "@mui/icons-material/DeleteForever";
 import EditIcon from "@mui/icons-material/Edit";
-import CloseIcon from "@mui/icons-material/Close";
+import React, { Component } from "react";
 import { Button, Modal } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import TaskService from "../services/TaskService";
+import "./Main.css";
 
 export class Main extends Component {
   constructor(props) {
@@ -36,8 +37,9 @@ export class Main extends Component {
 
   render() {
     return (
+      <div id="main-background">
       <div className="table">
-        <h1 className="text-left"> To Do Lista</h1>
+        <h1 className="text-left"> ToDo Lista</h1>
         <table className="table table-striped">
           <thead>
             <tr>
@@ -74,7 +76,7 @@ export class Main extends Component {
                         this.deleteTaskById(task.id);
                         this.refreshPage();
                       }}
-                    >
+                      >
                       Ja
                     </Button>
                     <Button variant="secondary" onClick={this.closeModal}>
@@ -89,6 +91,7 @@ export class Main extends Component {
             ))}
           </tbody>
         </table>
+            </div>
       </div>
     );
   }

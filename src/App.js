@@ -1,11 +1,11 @@
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import './App.css';
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Main from './components/Main/Main';
-import Login from './components/Login/Login';
 import Header from './components/Header/Header';
+import Login from './components/Login/Login';
+import Main from './components/Main/Main';
 import Signup from './components/Signup/Signup';
-import Edit from './components/Task/EditTask';
 import Add from './components/Task/AddTask';
+import Edit from './components/Task/EditTask';
 
 function App() {
   return (
@@ -15,8 +15,8 @@ function App() {
         <Route path="/main" element={ 
           <><Header /><Main /></> } />
           <Route path="/signup" element={< Signup/>}/>
-          <Route path="/edit" element={< Edit/>}/>
-          <Route path="/add" element={< Add/>} />
+          <Route path="/edit" element={<><Header /><Edit /></>}/>
+          <Route path="/add" element={<><Header /><Add /></>} />
       </Routes>
     </Router>
   );

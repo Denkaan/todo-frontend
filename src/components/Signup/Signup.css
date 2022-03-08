@@ -1,0 +1,19 @@
+#signup {
+    height: 100vh;
+    background-image: linear-gradient(140deg, #EADEDB 0%, #BC70A4 50%, #BFD641 75%);
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .signupcard {
+    width: 25rem;
+    height: 30rem;
+    background-color: rgba(140, 140, 140, 0.8) !important;
+    margin: auto;
+  }
+  
+  .error {
+    width: 25rem;
+    margin-top: 65%;
+    background-color: rgba(140, 140, 140, 0.8) !important;
+  }

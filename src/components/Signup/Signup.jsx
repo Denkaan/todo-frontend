@@ -1,7 +1,9 @@
 import axios from "axios";
 import { useState } from "react";
-import { Button, Card, Form, Spinner, Alert, Modal } from "react-bootstrap";
+import { Alert, Button, Card, Form, Modal, Spinner } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import './Signup.css';
+import logo from './../../assets/logo.png'
 
 const Signup = () => {
   const [email, setEmail] = useState();
@@ -58,10 +60,11 @@ const Signup = () => {
         </Button>
       </Modal.Footer>
     </Modal>
-    <div className="main d-flex justify-content-center">
-      <Card className="logincard">
+    <div id="signup" className="main d-flex justify-content-center">
+      <Card className="signupcard">
         <Card.Header className="text-center">
-          <h3 className="text-white">{`Logga in`}</h3>
+          <img src={logo} id="logo"/>
+          <h3 className="text-white">{`Skapa konto`}</h3>
         </Card.Header>
         <Card.Body>
         {error && <Alert variant="danger">{error}</Alert>}
@@ -80,7 +83,7 @@ const Signup = () => {
               <Form.Label className="text-white">{`Lösenord`}</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Password"
+                placeholder="Lösenord"
                 minLength={2}
                 onChange={(e) => setPassword(e.target.value)}
               />
@@ -99,7 +102,7 @@ const Signup = () => {
                 >
                   {`Skapa konto`}
                 </Button>
-                <div className="p-4 box mt-3 text-center text-black">
+                <div className="p-4 box text-center text-black">
                 {`Har du redan ett konto?`} <Link to="/">{`Logga in`}</Link>
               </div>
               </div>

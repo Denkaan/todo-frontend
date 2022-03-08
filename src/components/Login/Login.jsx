@@ -2,6 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import { Button, Card, Form, Spinner } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
+import "./Login.css";
+import logo from "./../../assets/logo.png";
 
 const Login = () => {
   const [email, setEmail] = useState();
@@ -10,9 +12,16 @@ const Login = () => {
   const [show, setShow] = useState(false);
   const navigate = useNavigate();
 
+  const options = {
+    header: { "Content-Type": "application/json" },
+  };
+
   const handleLogin = async (email, password) => {
     axios
-      .get("http://localhost:8080/users/login/" + email + "/" + password)
+      .post("http://localhost:8080/users/login", {
+        email: email,
+        password: password,
+      })
       .then((response) => {
         if (response.data === true) {
           console.log("LOGIN SUCCESS");
@@ -32,9 +41,10 @@ const Login = () => {
   };
 
   return (
-    <div className="main d-flex justify-content-center">
+    <div id="login" className="main d-flex justify-content-center">
       <Card className="logincard">
         <Card.Header className="text-center">
+        <img src={logo} id="logo"/>
           <h3 className="text-white">{`Logga in`}</h3>
         </Card.Header>
         <Card.Body>
@@ -52,7 +62,7 @@ const Login = () => {
               <Form.Label className="text-white">{`Lösenord`}</Form.Label>
               <Form.Control
                 type="password"
-                placeholder="Password"
+                placeholder="Lösenord"
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
@@ -74,8 +84,8 @@ const Login = () => {
                   {`Har du inget konto? `}
                   <Link to="/signup">{`Skapa konto`}</Link>
                 </div>
-                <div className="text-black m-1 text-center">
-                  <Link to="/forgot-password">Glömt lösenord?</Link>
+                <div className="text-white text-center">
+                  <Link to="/">Glömt lösenord?</Link>
                 </div>
               </div>
             ) : (
