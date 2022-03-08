@@ -70,11 +70,11 @@ const Login = () => {
                 >
                   {`Logga in`}
                 </Button>
-                <div className="text-white m-1 text-center">
+                <div className="text-black m-1 text-center">
                   {`Har du inget konto? `}
                   <Link to="/signup">{`Skapa konto`}</Link>
                 </div>
-                <div className="text-white m-1 text-center">
+                <div className="text-black m-1 text-center">
                   <Link to="/forgot-password">Glömt lösenord?</Link>
                 </div>
               </div>

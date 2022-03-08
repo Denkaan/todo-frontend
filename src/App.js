@@ -5,6 +5,7 @@ import Login from './components/Login/Login';
 import Header from './components/Header/Header';
 import Signup from './components/Signup/Signup';
 import Edit from './components/Task/EditTask';
+import Add from './components/Task/AddTask';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <><Header /><Main /></> } />
           <Route path="/signup" element={< Signup/>}/>
           <Route path="/edit" element={< Edit/>}/>
+          <Route path="/add" element={< Add/>} />
       </Routes>
     </Router>
   );
