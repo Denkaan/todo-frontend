@@ -1,0 +1,25 @@
+.footer-main {
+  width: 100%;
+  bottom: 0;
+  position: absolute;
+  background-image: linear-gradient(
+    140deg,
+    #eadedb,
+    #bc70a4,
+    #bfd641
+  );
+}
+
+.footer-row img {
+  max-width: 85px;
+}
+.footer-main ul {
+  list-style-type: none;
+  text-align: left;
+  max-width: 400px;
+}
+.footer-main li,
+.footer-main a {
+  text-decoration: none !important;
+  color: black !important;
+}

@@ -6,6 +6,7 @@ import Main from './components/Main/Main';
 import Signup from './components/Signup/Signup';
 import Add from './components/Task/AddTask';
 import Edit from './components/Task/EditTask';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (
@@ -13,10 +14,10 @@ function App() {
       <Routes>
         <Route path="/" element={ <Login /> } />
         <Route path="/main" element={ 
-          <><Header /><Main /></> } />
+          <><Header /><Main /><Footer/></> } />
           <Route path="/signup" element={< Signup/>}/>
-          <Route path="/edit" element={<><Header /><Edit /></>}/>
-          <Route path="/add" element={<><Header /><Add /></>} />
+          <Route path="/edit" element={<><Header /><Edit /><Footer/></>}/>
+          <Route path="/add" element={<><Header /><Add /><Footer/></>} />
       </Routes>
     </Router>
   );
