@@ -2,7 +2,8 @@ import axios from "axios";
 import { useState } from "react";
 import { Button, Card, Form, Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import "./AddTask.css"
+import "./AddTask.css";
+import logo from "./../../assets/logo.png";
 
 const AddTask = () => {
   const [title, setTitle] = useState();
@@ -13,16 +14,21 @@ const AddTask = () => {
 
   const createTask = async (title, description, date, time) => {
     axios
-      .post("http://localhost:8080/tasks/add", {title: title, description: description, date: date, time: time})
+      .post("http://localhost:8080/tasks/add", {
+        title: title,
+        description: description,
+        date: date,
+        time: time,
+      })
       .then((response) => {
-            if(response.status === 200){
-                navigate("/main");
-            }else if(response.status === 408){
-                console.log("SOMETHING WENT WRONG")
-                this.setState({ requestFailed: true })
-            }
-        })
-      }
+        if (response.status === 200) {
+          navigate("/main");
+        } else if (response.status === 408) {
+          console.log("SOMETHING WENT WRONG");
+          this.setState({ requestFailed: true });
+        }
+      });
+  };
 
   const handleCreateTask = () => {
     setTimeout(() => {
@@ -30,11 +36,11 @@ const AddTask = () => {
     }, 1000);
   };
 
-
   return (
     <Row className="mx-auto mt-5 justify-content-center">
-      <Card className="add-view-card">
+      <Card className="add-task-card">
         <Card.Body className="text-black">
+          <img src={logo} id="add-logo" />
           <h1 className="text-center">{`Lägg till ToDo`}</h1>
           <Form className="p-4">
             <Row className="d-flex justify-content-between">
@@ -100,4 +106,4 @@ const AddTask = () => {
   );
 };
 
-export default AddTask
+export default AddTask;

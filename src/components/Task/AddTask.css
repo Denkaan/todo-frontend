@@ -1,10 +1,16 @@
-.add-view-card {
-    position: absolute !important;
-    background-color: rgba(128, 128, 128, 0.8) !important;
-    width: 70rem !important;
-    height: 50vh;
-    margin: auto;
-    overflow: auto;
-    z-index: 22;
-  }
-  
+.add-task-card {
+  position: absolute !important;
+  background-color: rgba(140, 140, 140, 0.8) !important;
+  width: 70rem !important;
+  height: 65vh;
+  margin: auto;
+  overflow: auto;
+  z-index: 22;
+}
+
+#add-logo {
+  max-width: 15%;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
