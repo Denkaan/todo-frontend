@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { Button, Card, Form, Col, Row } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import "./AddTask.css"
 
 const AddTask = () => {
   const [title, setTitle] = useState();
@@ -31,7 +32,7 @@ const AddTask = () => {
 
 
   return (
-    <Row className="mx-auto h-100 justify-content-center">
+    <Row className="mx-auto mt-5 justify-content-center">
       <Card className="add-view-card">
         <Card.Body className="text-black">
           <h1 className="text-center">{`Lägg till ToDo`}</h1>
