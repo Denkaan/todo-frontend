@@ -63,6 +63,9 @@ export default function Header() {
                       <a href="/main">{`Hem`}</a>
                     </Col>
                     <Col>
+                      <a href="/profile">{`Profil`}</a>
+                    </Col>
+                    <Col>
                       <a href="/add">{`Lägg till`}</a>
                     </Col>
                     <Col>
@@ -80,6 +83,11 @@ export default function Header() {
             <Col>
               <span>
                 <Nav.Link href="/main">{`Hem`}</Nav.Link>
+              </span>
+            </Col>
+            <Col>
+              <span>
+                <Nav.Link href="/profile">{`Profil`}</Nav.Link>
               </span>
             </Col>
             <Col>
